@@ -38,6 +38,8 @@ public class Controlador implements ActionListener{
 			borrarUser();
 		}else if(vista.botonCreate== evento.getSource()) {
 			addUser();
+		}else if(vista.botonRead== evento.getSource()) {
+			addUser();
 		}
 	}
 	
