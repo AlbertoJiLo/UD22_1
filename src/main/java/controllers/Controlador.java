@@ -19,13 +19,16 @@ public class Controlador implements ActionListener{
 	private String nombre;
 	private String apellido;
 	private String direccion;
-	private String dni;
+	private int dni;
 	private String fecha;
 
 	public Controlador(Modelo modelo, Vista vista) {
 		this.modelo = modelo;
 		this.vista = vista;
 		this.vista.botonDelete.addActionListener(this);
+		this.vista.botonCreate.addActionListener(this);
+		this.vista.botonDelete.addActionListener(this);
+		this.vista.botonRead.addActionListener(this);
 		this.conexion = new Conexion();
 	}
 	
@@ -34,18 +37,18 @@ public class Controlador implements ActionListener{
 		if(vista.botonDelete == evento.getSource()) {
 			borrarUser();
 		}else if(vista.botonCreate== evento.getSource()) {
-			
+			addUser();
 		}
 	}
 	
 	public void addUser() {
-		id = Integer.parseInt(vista.textId.getText());
 		nombre = vista.textNombre.getText();
 		apellido = vista.textApellido.getText();
 		direccion = vista.textDireccion.getText();
-		dni = vista.textDni.getText();
+		dni = Integer.parseInt(vista.textDni.getText());
 		fecha = vista.textFecha.getText();
-		conexion.establecerCon();
+		modelo = new Modelo(nombre, apellido, direccion, dni, fecha);
+		modelo.createUser();
 	}
 	
 	
