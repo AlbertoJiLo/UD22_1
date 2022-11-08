@@ -84,35 +84,45 @@ public class Controlador implements ActionListener, WindowListener {
 	// Método para añadir borrar la fila de una tabla.
 
 	public void borrarUser() {
+		try {
 		id = Integer.parseInt(vista.textIdCliente.getText());
 		modeloClientes = new ModeloClientes(id);
 		modeloClientes.borrarUsuario();
+		}catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(null,
+					"ID vacia");
+		}
 	}
 
 	// Método para seleccionar los campos de una fila y rellenar visualmente los de
 	// la interfaz a partir de la id.
 
 	public void readUser() {
+		try {
 		id = Integer.parseInt(vista.textIdCliente.getText());
 		modeloClientes = new ModeloClientes(id, nombre, apellido, direccion, dni, fecha);
 		String datos = modeloClientes.readUsuario();
 		System.out.println(datos);
-		if (datos != "") {
-			String[] partes = datos.split("__");
-			String id = partes[0];
-			vista.textIdCliente.setText(id);
-			String nombre = partes[1];
-			vista.textNombreCliente.setText(nombre);
-			String apellido = partes[2];
-			vista.textApellidoCliente.setText(apellido);
-			String direccion = partes[3];
-			vista.textDireccionCliente.setText(direccion);
-			String dni = partes[4];
-			vista.textDniCliente.setText(dni);
-			String fecha = partes[5];
-			vista.textFechaCliente.setText(fecha);
-		} else {
-			JOptionPane.showMessageDialog(null, "ID no encontrada");
+			if (datos != "") {
+				String[] partes = datos.split("__");
+				String id = partes[0];
+				vista.textIdCliente.setText(id);
+				String nombre = partes[1];
+				vista.textNombreCliente.setText(nombre);
+				String apellido = partes[2];
+				vista.textApellidoCliente.setText(apellido);
+				String direccion = partes[3];
+				vista.textDireccionCliente.setText(direccion);
+				String dni = partes[4];
+				vista.textDniCliente.setText(dni);
+				String fecha = partes[5];
+				vista.textFechaCliente.setText(fecha);
+			} else {
+				JOptionPane.showMessageDialog(null, "ID no encontrada");
+			}
+		}catch (NumberFormatException ex) {
+			JOptionPane.showMessageDialog(null,
+					"ID vacia");
 		}
 
 	}
@@ -142,8 +152,7 @@ public class Controlador implements ActionListener, WindowListener {
 		conexionClientes.cerrarCon();
 	}
 
-	// Método para iniciar la interfaz gráfica, la conexión, la BBDD y la tablas
-	// tablas iniciales.
+	// Método para iniciar la interfaz gráfica, la conexión, la BBDD y la tablas iniciales.
 
 	public void iniciarVista() {
 		conexionClientes.establecerCon();

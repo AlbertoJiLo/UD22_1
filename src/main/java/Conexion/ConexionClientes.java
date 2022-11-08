@@ -102,7 +102,6 @@ public class ConexionClientes {
  
         }catch (Exception ex) {
         	System.out.println(ex);
-        	JOptionPane.showMessageDialog(null,"La tabla con id "+id+" no existe y no ha podido ser borrada");
         } 
     }
 	
