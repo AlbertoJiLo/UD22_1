@@ -8,6 +8,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 
 public class Vista extends JFrame {
@@ -27,6 +29,8 @@ public class Vista extends JFrame {
 
 	
 	public Vista() {
+		
+	
 		setTitle("CRUD Ejercicio 1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 398, 257);
