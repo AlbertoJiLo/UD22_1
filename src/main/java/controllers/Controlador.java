@@ -33,6 +33,7 @@ public class Controlador implements ActionListener{
 		this.vista.botonUpdate.addActionListener(this);
 		this.vista.botonRead.addActionListener(this);
 		this.conexionClientes = new ConexionClientes();
+
 	}
 	
 	@Override
@@ -45,6 +46,7 @@ public class Controlador implements ActionListener{
 			readUser();
 		}else if(vista.botonUpdate == evento.getSource()) {
 			updateUser();
+
 		}
 	}
 	
