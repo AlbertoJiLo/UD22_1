@@ -1,6 +1,6 @@
 package views;
 
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,25 +9,27 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
+
 public class Vista extends JFrame {
 
 	private JPanel contentPane;
-	public JTextField textId;
-	public JTextField textNombre;
-	public JTextField textApellido;
-	public JTextField textDireccion;
-	public JTextField textDni;
-	public JTextField textFecha;
+	public JTextField textIdCliente;
+	public JTextField textNombreCliente;
+	public JTextField textApellidoCliente;
+	public JTextField textDireccionCliente;
+	public JTextField textDniCliente;
+	public JTextField textFechaCliente;
 	public JButton botonCreate;
 	public JButton botonUpdate;
 	public JButton botonDelete;
 	public JButton botonRead;
 
+
 	
 	public Vista() {
 		setTitle("CRUD Ejercicio 1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 254);
+		setBounds(100, 100, 398, 257);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -35,74 +37,75 @@ public class Vista extends JFrame {
 		contentPane.setLayout(null);
 		
 		botonCreate = new JButton("Create");
-		botonCreate.setBounds(28, 32, 85, 21);
+		botonCreate.setBounds(21, 31, 85, 21);
 		contentPane.add(botonCreate);
 		
 		botonUpdate = new JButton("Update");
-		botonUpdate.setBounds(28, 75, 85, 21);
+		botonUpdate.setBounds(21, 74, 85, 21);
 		contentPane.add(botonUpdate);
 		
 		botonDelete = new JButton("Delete");
-		botonDelete.setBounds(28, 122, 85, 21);
+		botonDelete.setBounds(21, 121, 85, 21);
 		contentPane.add(botonDelete);
 		
 		botonRead = new JButton("Read");
-		botonRead.setBounds(28, 165, 85, 21);
+		botonRead.setBounds(21, 164, 85, 21);
 		contentPane.add(botonRead);
 		
-		textId = new JTextField();
-		textId.setBounds(142, 33, 257, 19);
-		contentPane.add(textId);
-		textId.setColumns(10);
+		textIdCliente = new JTextField();
+		textIdCliente.setBounds(135, 32, 177, 19);
+		contentPane.add(textIdCliente);
+		textIdCliente.setColumns(10);
 		
-		textNombre = new JTextField();
-		textNombre.setColumns(10);
-		textNombre.setBounds(142, 62, 257, 19);
-		contentPane.add(textNombre);
+		textNombreCliente = new JTextField();
+		textNombreCliente.setColumns(10);
+		textNombreCliente.setBounds(135, 61, 177, 19);
+		contentPane.add(textNombreCliente);
 		
-		textApellido = new JTextField();
-		textApellido.setColumns(10);
-		textApellido.setBounds(142, 91, 257, 19);
-		contentPane.add(textApellido);
+		textApellidoCliente = new JTextField();
+		textApellidoCliente.setColumns(10);
+		textApellidoCliente.setBounds(135, 90, 177, 19);
+		contentPane.add(textApellidoCliente);
 		
-		textDireccion = new JTextField();
-		textDireccion.setColumns(10);
-		textDireccion.setBounds(142, 123, 257, 19);
-		contentPane.add(textDireccion);
+		textDireccionCliente = new JTextField();
+		textDireccionCliente.setColumns(10);
+		textDireccionCliente.setBounds(135, 122, 177, 19);
+		contentPane.add(textDireccionCliente);
 		
-		textDni = new JTextField();
-		textDni.setColumns(10);
-		textDni.setBounds(142, 152, 257, 19);
-		contentPane.add(textDni);
+		textDniCliente = new JTextField();
+		textDniCliente.setColumns(10);
+		textDniCliente.setBounds(135, 151, 177, 19);
+		contentPane.add(textDniCliente);
 		
-		textFecha = new JTextField();
-		textFecha.setColumns(10);
-		textFecha.setBounds(142, 181, 257, 19);
-		contentPane.add(textFecha);
+		textFechaCliente = new JTextField();
+		textFechaCliente.setColumns(10);
+		textFechaCliente.setBounds(135, 180, 177, 19);
+		contentPane.add(textFechaCliente);
 		
 		JLabel lblNewLabel = new JLabel("id");
-		lblNewLabel.setBounds(407, 36, 45, 13);
+		lblNewLabel.setBounds(322, 38, 45, 13);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNombre = new JLabel("nombre");
-		lblNombre.setBounds(407, 65, 45, 13);
+		lblNombre.setBounds(322, 67, 45, 13);
 		contentPane.add(lblNombre);
 		
 		JLabel lblApellido = new JLabel("apellido");
-		lblApellido.setBounds(407, 94, 45, 13);
+		lblApellido.setBounds(322, 96, 57, 13);
 		contentPane.add(lblApellido);
 		
 		JLabel lblDireccion = new JLabel("direccion");
-		lblDireccion.setBounds(407, 126, 45, 13);
+		lblDireccion.setBounds(322, 128, 57, 13);
 		contentPane.add(lblDireccion);
 		
 		JLabel lblDni = new JLabel("dni");
-		lblDni.setBounds(409, 155, 45, 13);
+		lblDni.setBounds(324, 157, 45, 13);
 		contentPane.add(lblDni);
 		
 		JLabel lblFecha = new JLabel("fecha");
-		lblFecha.setBounds(409, 184, 45, 13);
+		lblFecha.setBounds(324, 186, 45, 13);
 		contentPane.add(lblFecha);
+		
 		
 
 	}

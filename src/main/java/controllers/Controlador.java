@@ -1,32 +1,38 @@
 package controllers;
 
 import java.awt.EventQueue;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import Conexion.Conexion;
-import models.Modelo;
+import Conexion.ConexionClientes;
+import models.ModeloClientes;
 import views.Vista;
 
 public class Controlador implements ActionListener{
 	
-	private Modelo modelo;
+	private ModeloClientes modeloClientes;
 	private Vista vista;
-	private Conexion conexion;
+	private ConexionClientes conexionClientes;
 	private int id;
 	private String nombre;
 	private String apellido;
 	private String direccion;
-	private String dni;
+	private int dni;
 	private String fecha;
 
-	public Controlador(Modelo modelo, Vista vista) {
-		this.modelo = modelo;
+
+	public Controlador(ModeloClientes modelo1, Vista vista) {
+		this.modeloClientes = modelo1;
 		this.vista = vista;
 		this.vista.botonDelete.addActionListener(this);
-		this.conexion = new Conexion();
+		this.vista.botonCreate.addActionListener(this);
+		this.vista.botonUpdate.addActionListener(this);
+		this.vista.botonRead.addActionListener(this);
+		this.conexionClientes = new ConexionClientes();
 	}
 	
 	@Override
@@ -34,34 +40,70 @@ public class Controlador implements ActionListener{
 		if(vista.botonDelete == evento.getSource()) {
 			borrarUser();
 		}else if(vista.botonCreate== evento.getSource()) {
-			
+			addUser();
+		}else if(vista.botonRead== evento.getSource()) {
+			readUser();
+		}else if(vista.botonUpdate == evento.getSource()) {
+			updateUser();
 		}
 	}
 	
 	public void addUser() {
-		id = Integer.parseInt(vista.textId.getText());
-		nombre = vista.textNombre.getText();
-		apellido = vista.textApellido.getText();
-		direccion = vista.textDireccion.getText();
-		dni = vista.textDni.getText();
-		fecha = vista.textFecha.getText();
-		conexion.establecerCon();
+			nombre = vista.textNombreCliente.getText();
+			apellido = vista.textApellidoCliente.getText();
+			direccion = vista.textDireccionCliente.getText();
+			dni = Integer.parseInt(vista.textDniCliente.getText());
+			fecha = vista.textFechaCliente.getText();
+			modeloClientes = new ModeloClientes(nombre, apellido, direccion, dni, fecha);
+			modeloClientes.createUser();
 	}
 	
 	
 	public void borrarUser() {
-		id = Integer.parseInt(vista.textId.getText());
-		conexion.borrarTabla(id);
+			id = Integer.parseInt(vista.textIdCliente.getText());
+			modeloClientes = new ModeloClientes(id);
+			modeloClientes.borrarUsuario();
+	}
+	
+	public void readUser() {
+			id = Integer.parseInt(vista.textIdCliente.getText());
+			modeloClientes = new ModeloClientes(id,nombre, apellido, direccion, dni, fecha);
+			String datos = modeloClientes.readUsuario();
+			System.out.println(datos);
+			String[] partes = datos.split("__");
+			String id = partes[0];
+			vista.textIdCliente.setText(id);
+			String nombre = partes[1];
+			vista.textNombreCliente.setText(nombre);
+			String apellido = partes[2];
+			vista.textApellidoCliente.setText(apellido);
+			String direccion= partes[3];
+			vista.textDireccionCliente.setText(direccion);
+			String dni = partes[4];
+			vista.textDniCliente.setText(dni);
+			String fecha = partes[5];
+			vista.textFechaCliente.setText(fecha);
+	}
+	
+	public void updateUser() {
+		id = Integer.parseInt(vista.textIdCliente.getText());
+		nombre = vista.textNombreCliente.getText();
+		apellido = vista.textApellidoCliente.getText();
+		direccion = vista.textDireccionCliente.getText();
+		dni = Integer.parseInt(vista.textDniCliente.getText());
+		fecha = vista.textFechaCliente.getText();
+		modeloClientes = new ModeloClientes(id,nombre, apellido, direccion, dni, fecha);
+		modeloClientes.editarUsuario();
 	}
 	
 	public void cerrarCon() {
-		conexion.cerrarCon();
+		conexionClientes.cerrarCon();
 	}
 	
 	public void iniciarVista() {
-		conexion.establecerCon();
-		conexion.crearDB();
-		conexion.crearTabla();
+		conexionClientes.establecerCon();
+		conexionClientes.crearDB();
+		conexionClientes.crearTabla();
 		vista.setTitle("Conversor");
 		vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		vista.setLocationRelativeTo(null);
